@@ -1,7 +1,7 @@
 import { db } from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { RestaurantHeader } from "./_components/header";
 import RestaurantCategories from "./_components/categories";
+import { RestaurantHeader } from "./_components/menu-header";
 
 interface RestaurantMenuPageProps {
   params: Promise<{ slug: string }>;
@@ -34,7 +34,10 @@ export default async function RestaurantMenuPage({
   return (
     <div className="">
       <div className="relative h-[250px] w-full">
-        <RestaurantHeader restaurant={restaurant} />
+        <RestaurantHeader
+          src={restaurant.coverImageUrl}
+          alt={restaurant.name}
+        />
       </div>
       <RestaurantCategories restaurant={restaurant} />
     </div>

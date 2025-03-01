@@ -5,15 +5,12 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 
 export function CartSheet() {
-  const { isOpen, toggleCart } = useContext(CartContext);
-  const handleAddToCart = () => toggleCart();
-
+  const { isOpen, toggleCart, products } = useContext(CartContext);
   return (
     <>
       <Sheet open={isOpen} onOpenChange={toggleCart}>
@@ -25,6 +22,11 @@ export function CartSheet() {
               account and remove your data from our servers.
             </SheetDescription>
           </SheetHeader>
+          {products.map((product) => (
+            <h1 key={product.id} className="">
+              {product.name} - {product.quantity}
+            </h1>
+          ))}
         </SheetContent>
       </Sheet>
     </>

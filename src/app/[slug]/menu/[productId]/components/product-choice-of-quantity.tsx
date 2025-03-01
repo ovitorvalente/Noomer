@@ -1,11 +1,15 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
 
-export function ProductChoiceOfQuantity() {
-  const [quantity, setQuantity] = useState<number>(1);
-
+interface ProductChoiceOfQuantityProps {
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+}
+export function ProductChoiceOfQuantity({
+  quantity,
+  setQuantity,
+}: ProductChoiceOfQuantityProps) {
   const handleIncrement = () => setQuantity((quantity) => quantity + 1);
   const handleDecrement = () =>
     setQuantity((quantity) => (quantity > 1 ? quantity - 1 : 1));

@@ -16,22 +16,24 @@ export function ProdutctHeader({ src, alt }: ProductsHeaderProps) {
 
   return (
     <>
-      <Button
-        variant="secondary"
-        size={"icon"}
-        className="absolute left-4 top-4 z-50"
-        onClick={handleGoBack}
-      >
-        <ChevronLeft />
-      </Button>
-      <Image src={src} alt={alt} fill className="object-contain" />
-      <Button
-        variant="secondary"
-        size={"icon"}
-        className="absolute right-4 top-4 z-50"
-      >
-        <ScrollText />
-      </Button>
+      <div className="relative h-96 min-h-80 w-full">
+        <Button
+          variant="secondary"
+          size={"icon"}
+          className="absolute left-4 top-4 z-50"
+          onClick={handleGoBack}
+        >
+          <ChevronLeft />
+        </Button>
+        <Image src={src} alt={alt} fill className="object-contain" />
+        <Button
+          variant="secondary"
+          size={"icon"}
+          className="absolute right-4 top-4 z-50"
+        >
+          <ScrollText />
+        </Button>
+      </div>
     </>
   );
 }

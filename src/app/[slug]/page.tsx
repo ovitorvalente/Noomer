@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GetRestaurantBySlug } from "../data/get-restaurant-by-slug";
-import { ConsumptionMethodOption } from "./_components/consumption-method-option";
+import { ConsumptionMethodOption } from "./components/consumption-method-option";
 
 interface RestaurantPageProps {
   params: Promise<{ slug: string }>;

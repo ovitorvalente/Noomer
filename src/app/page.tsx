@@ -1,4 +1,4 @@
-import RestaurantList from "./_components/restaurants-list";
+import RestaurantList from "./components/restaurants-list";
 
 export default function Home() {
   return (

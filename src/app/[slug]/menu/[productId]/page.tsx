@@ -1,13 +1,14 @@
 import { db } from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { ProdutctHeader } from "./_components/product-header";
+import { ProdutctHeader } from "./components/product-header";
 import Image from "next/image";
 import { formatCurrency } from "@/helpers/format-currency";
-import { ProductChoiceOfQuantity } from "./_components/product-choice-of-quantity";
-import { Button } from "@/components/ui/button";
-import { ProductAbout } from "./_components/product-about";
-import { ProductIngredients } from "./_components/product-ingredients";
+import { ProductChoiceOfQuantity } from "./components/product-choice-of-quantity";
+import { ProductAbout } from "./components/product-about";
+import { ProductIngredients } from "./components/product-ingredients";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { AddToBag } from "./components/add-to-bag";
+import { CartSheet } from "./components/cart-sheet";
 
 interface ProductPageProps {
   params: Promise<{ slug: string; productId: string }>;
@@ -60,7 +61,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <ScrollBar orientation="vertical" />
           </ScrollArea>
         </div>
-        <Button className="w-full">Adicionar a Sacola</Button>
+        <AddToBag />
+        <CartSheet />
       </div>
     </div>
   );

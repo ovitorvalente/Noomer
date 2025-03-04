@@ -7,26 +7,27 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { useContext } from "react";
-import { CartContext } from "../../contexts/cart";
+import { CartItem } from "./cart-item";
+import { CartContext } from "../contexts/cart";
 
 export function CartSheet() {
   const { isOpen, toggleCart, products } = useContext(CartContext);
   return (
     <>
       <Sheet open={isOpen} onOpenChange={toggleCart}>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
+        <SheetContent className="flex w-[90%] flex-col items-start">
+          <SheetHeader className="flex items-center justify-between">
+            <SheetTitle>Sacola</SheetTitle>
             <SheetDescription>
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
             </SheetDescription>
           </SheetHeader>
-          {products.map((product) => (
-            <h1 key={product.id} className="">
-              {product.name} - {product.quantity}
-            </h1>
-          ))}
+          <div className="flex w-full flex-col items-start gap-8">
+            {products.map((product) => (
+              <CartItem key={product.id} product={product} />
+            ))}
+          </div>
         </SheetContent>
       </Sheet>
     </>

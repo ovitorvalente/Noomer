@@ -12,7 +12,7 @@ interface CartItemProps {
 }
 
 export function CartItem({ product }: CartItemProps) {
-  const { decreaseProductQuantity, increaseProductQuantity } =
+  const { decreaseProductQuantity, increaseProductQuantity, removeProduct } =
     useContext(CartContext);
   return (
     <>
@@ -56,6 +56,7 @@ export function CartItem({ product }: CartItemProps) {
         </div>
 
         <Button
+          onClick={() => removeProduct(product.id)}
           variant={"outline"}
           size={"icon"}
           className="transition-all delay-75 duration-300 hover:rotate-12 hover:bg-red-500 hover:text-white"

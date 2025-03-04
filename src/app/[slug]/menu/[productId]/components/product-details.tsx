@@ -6,9 +6,9 @@ import { ProductIngredients } from "./product-ingredients";
 import { ProductChoiceOfQuantity } from "./product-choice-of-quantity";
 import { formatCurrency } from "@/helpers/format-currency";
 import { AddToBag } from "./add-to-bag";
-import { CartSheet } from "./cart-sheet";
 import { Prisma } from "@prisma/client";
 import { useState } from "react";
+import { CartSheet } from "../../components/cart-sheet";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{

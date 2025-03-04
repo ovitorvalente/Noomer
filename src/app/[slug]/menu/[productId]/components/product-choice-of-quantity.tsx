@@ -21,7 +21,7 @@ export function ProductChoiceOfQuantity({
           <ChevronLeft />
         </Button>
         <p className="flex w-4 items-center justify-center">{quantity}</p>
-        <Button onClick={handleIncrement} variant="destructive" size={"icon"}>
+        <Button onClick={handleIncrement} variant="default" size={"icon"}>
           <ChevronRight />
         </Button>
       </div>

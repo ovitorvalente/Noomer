@@ -16,7 +16,7 @@ export function CartItem({ product }: CartItemProps) {
     useContext(CartContext);
   return (
     <>
-      <div className="flex w-full items-center justify-between">
+      <div className="flex w-full items-center justify-between border-b border-secondary py-6">
         <div className="flex items-center justify-center gap-2">
           <div className="relative h-24 w-24 rounded-3xl bg-secondary">
             <Image
@@ -46,7 +46,7 @@ export function CartItem({ product }: CartItemProps) {
               </p>
               <Button
                 onClick={() => increaseProductQuantity(product.id)}
-                variant="destructive"
+                variant="default"
                 size={"icon"}
               >
                 <ChevronRight />

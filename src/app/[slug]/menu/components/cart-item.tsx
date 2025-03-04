@@ -12,7 +12,7 @@ interface CartItemProps {
 }
 
 export function CartItem({ product }: CartItemProps) {
-  const { DecreaseProductQuantity, IncreaseProductQuantity } =
+  const { decreaseProductQuantity, increaseProductQuantity } =
     useContext(CartContext);
   return (
     <>
@@ -35,7 +35,7 @@ export function CartItem({ product }: CartItemProps) {
 
             <div className="flex items-center justify-center gap-4">
               <Button
-                onClick={() => DecreaseProductQuantity(product.id)}
+                onClick={() => decreaseProductQuantity(product.id)}
                 variant="outline"
                 size={"icon"}
               >
@@ -45,7 +45,7 @@ export function CartItem({ product }: CartItemProps) {
                 {product.quantity}
               </p>
               <Button
-                onClick={() => IncreaseProductQuantity(product.id)}
+                onClick={() => increaseProductQuantity(product.id)}
                 variant="destructive"
                 size={"icon"}
               >

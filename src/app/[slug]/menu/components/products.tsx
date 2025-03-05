@@ -2,7 +2,7 @@ import { formatCurrency } from "@/helpers/format-currency";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 interface ProductsProps {
   products: Product[];
@@ -10,11 +10,13 @@ interface ProductsProps {
 
 export function Products({ products }: ProductsProps) {
   const { slug } = useParams<{ slug: string }>();
+  const SearchParams = useSearchParams();
+  const consumptionMethod = SearchParams.get("consumptionMethod");
   return (
     <div className="flex h-full w-full flex-col">
       {products.map((product) => (
         <Link
-          href={`/${slug}/menu/${product.id}`}
+          href={`/${slug}/menu/${product.id}?consumptionMethod=${consumptionMethod}`}
           key={product.id}
           className="flex items-center justify-between gap-10 border-b py-4"
         >

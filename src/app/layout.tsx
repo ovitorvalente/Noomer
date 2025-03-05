@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { CartProvider } from "./[slug]/menu/contexts/cart";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="pt-br" className="">
       <body className={`${inter.className} antialiased`}>
         <CartProvider>{children}</CartProvider>
+        <Toaster richColors />
       </body>
     </html>
   );

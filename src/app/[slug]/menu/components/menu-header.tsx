@@ -8,8 +8,13 @@ import { useRouter } from "next/navigation";
 interface RestaurantHeaderProps {
   src: string;
   alt: string;
+  restaurantSlug: string;
 }
-export function RestaurantHeader({ src, alt }: RestaurantHeaderProps) {
+export function RestaurantHeader({
+  src,
+  alt,
+  restaurantSlug,
+}: RestaurantHeaderProps) {
   const router = useRouter();
 
   const handleGoBack = () => router.back();
@@ -29,6 +34,7 @@ export function RestaurantHeader({ src, alt }: RestaurantHeaderProps) {
         variant="secondary"
         size={"icon"}
         className="absolute right-4 top-4 z-50"
+        onClick={() => router.push(`/${restaurantSlug}/orders`)}
       >
         <ScrollText />
       </Button>

@@ -8,8 +8,13 @@ import { useRouter } from "next/navigation";
 interface ProductsHeaderProps {
   src: string;
   alt: string;
+  restaurantSlug: string;
 }
-export function ProdutctHeader({ src, alt }: ProductsHeaderProps) {
+export function ProdutctHeader({
+  src,
+  alt,
+  restaurantSlug,
+}: ProductsHeaderProps) {
   const router = useRouter();
 
   const handleGoBack = () => router.back();
@@ -27,6 +32,7 @@ export function ProdutctHeader({ src, alt }: ProductsHeaderProps) {
         </Button>
         <Image src={src} alt={alt} fill className="object-contain" />
         <Button
+          onClick={() => router.push(`/${restaurantSlug}/orders`)}
           variant="secondary"
           size={"icon"}
           className="absolute right-4 top-4 z-50"

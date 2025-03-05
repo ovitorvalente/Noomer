@@ -23,6 +23,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="flex h-full w-full flex-col items-center">
       <ProdutctHeader
+        restaurantSlug={slug}
         src={product.imageUrl ?? "/fallback.png"}
         alt={product.name}
       />

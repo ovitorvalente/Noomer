@@ -35,6 +35,7 @@ export default async function RestaurantMenuPage({
     <div className="">
       <div className="relative h-[250px] w-full">
         <RestaurantHeader
+          restaurantSlug={slug}
           src={restaurant.coverImageUrl}
           alt={restaurant.name}
         />

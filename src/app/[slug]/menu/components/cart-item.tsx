@@ -1,11 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { CartContext, CartProduct } from "../contexts/cart";
 import { ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
 import Image from "next/image";
-import { formatCurrency } from "@/helpers/format-currency";
 import { useContext } from "react";
+
+import { Button } from "@/components/ui/button";
+import { formatCurrency } from "@/helpers/format-currency";
+
+import { CartContext, CartProduct } from "../contexts/cart";
 
 interface CartItemProps {
   product: CartProduct;

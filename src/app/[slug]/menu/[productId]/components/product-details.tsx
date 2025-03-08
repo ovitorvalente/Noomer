@@ -1,14 +1,16 @@
 "use client";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import Image from "next/image";
-import { ProductAbout } from "./product-about";
-import { ProductIngredients } from "./product-ingredients";
-import { ProductChoiceOfQuantity } from "./product-choice-of-quantity";
-import { formatCurrency } from "@/helpers/format-currency";
-import { AddToBag } from "./add-to-bag";
 import { Prisma } from "@prisma/client";
+import Image from "next/image";
 import { useState } from "react";
+
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { formatCurrency } from "@/helpers/format-currency";
+
 import { CartSheet } from "../../components/cart-sheet";
+import { AddToBag } from "./add-to-bag";
+import { ProductAbout } from "./product-about";
+import { ProductChoiceOfQuantity } from "./product-choice-of-quantity";
+import { ProductIngredients } from "./product-ingredients";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{

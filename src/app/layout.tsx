@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
 import "./globals.css";
+
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { CartProvider } from "./[slug]/menu/contexts/cart";
+
 import { Toaster } from "@/components/ui/sonner";
+
+import { CartProvider } from "./[slug]/menu/contexts/cart";
 
 const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],

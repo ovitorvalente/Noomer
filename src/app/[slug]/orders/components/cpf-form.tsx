@@ -1,4 +1,11 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { usePathname, useRouter } from "next/navigation";
+import { FormProvider, useForm } from "react-hook-form";
+import { PatternFormat } from "react-number-format";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -9,9 +16,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { z } from "zod";
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   FormControl,
   FormField,
@@ -20,9 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { PatternFormat } from "react-number-format";
-import { Button } from "@/components/ui/button";
-import { usePathname, useRouter } from "next/navigation";
+
 import { isValidCpf, removeCpfPunctuation } from "../../menu/helpers/cpf";
 
 type formSchema = z.infer<typeof formSchema>;

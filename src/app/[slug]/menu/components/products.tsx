@@ -1,9 +1,10 @@
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { formatCurrency } from "@/helpers/format-currency";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
+
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { formatCurrency } from "@/helpers/format-currency";
 
 interface ProductsProps {
   products: Product[];

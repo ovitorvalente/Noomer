@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ChevronLeft, ScrollText } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
 
 interface RestaurantHeaderProps {
   src: string;

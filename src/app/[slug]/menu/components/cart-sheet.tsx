@@ -1,16 +1,18 @@
 "use client";
+import { useContext, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useContext, useState } from "react";
-import { CartItem } from "./cart-item";
-import { CartContext } from "../contexts/cart";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatCurrency } from "@/helpers/format-currency";
-import { Button } from "@/components/ui/button";
+
+import { CartContext } from "../contexts/cart";
+import { CartItem } from "./cart-item";
 import { FinishOrderDrawer } from "./finish-order-drawer";
 
 export function CartSheet() {

@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { GetAllRestaurants } from "../data/get-all-restaurants";
 import Image from "next/image";
+import Link from "next/link";
+
+import { GetAllRestaurants } from "../data/get-all-restaurants";
 
 export default async function RestaurantList() {
   const restaurants = await GetAllRestaurants();

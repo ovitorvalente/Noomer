@@ -1,9 +1,10 @@
 "use server";
 
-import { db } from "@/lib/prisma";
 import { ConsumptionMethod } from "@prisma/client";
+
+import { db } from "@/lib/prisma";
+
 import { removeCpfPunctuation } from "../helpers/cpf";
-import { redirect } from "next/navigation";
 
 interface CreateOrderInput {
   customerName: string;

@@ -1,6 +1,7 @@
 import { OrderStatus, Prisma } from "@prisma/client";
-import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+
+import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { formatCurrency } from "@/helpers/format-currency";
 

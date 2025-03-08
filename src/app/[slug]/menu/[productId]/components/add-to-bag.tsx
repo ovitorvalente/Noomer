@@ -1,8 +1,10 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart";
 import { Product } from "@prisma/client";
+import { useContext } from "react";
+
+import { Button } from "@/components/ui/button";
+
+import { CartContext } from "../../contexts/cart";
 
 interface ProductProps {
   product: Product;

@@ -1,4 +1,13 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ConsumptionMethod } from "@prisma/client";
+import { Loader2Icon } from "lucide-react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useContext, useState, useTransition } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { PatternFormat } from "react-number-format";
+import { z } from "zod";
+
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -10,11 +19,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { z } from "zod";
-import { isValidCpf } from "../helpers/cpf";
-import { useForm, FormProvider } from "react-hook-form";
-import { PatternFormat } from "react-number-format";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   FormControl,
   FormField,
@@ -23,12 +27,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+
 import { createOrder } from "../actions/create-order";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { ConsumptionMethod } from "@prisma/client";
-import { useContext, useState, useTransition } from "react";
 import { CartContext } from "../contexts/cart";
-import { Loader2Icon } from "lucide-react";
+import { isValidCpf } from "../helpers/cpf";
 import { OrderPlaced } from "./order-placed";
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -91,7 +93,7 @@ export function FinishOrderDrawer({
         router.push(`/${slug}/orders?cpf=${data.cpf}`);
       });
     } catch (error) {
-      console.error("Error");
+      console.error(`Error: ${error}`);
     }
   };
 

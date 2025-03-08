@@ -10,7 +10,7 @@ export function OrderItem() {
         </Badge>
 
         <div className="">
-          <h3 className="">FSW Donald's</h3>
+          <h3 className="">{`FSW Donald's`}</h3>
         </div>
       </div>
     </>

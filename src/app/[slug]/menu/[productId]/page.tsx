@@ -1,14 +1,16 @@
-import { db } from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { ProdutctHeader } from "./components/product-header";
+
+import { db } from "@/lib/prisma";
+
 import { ProductDetails } from "./components/product-details";
+import { ProductHeader } from "./components/product-header";
 
 interface ProductPageProps {
   params: { slug: string; productId: string };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug, productId } = await params;
+  const { slug, productId } = params;
   const product = await db.product.findUnique({
     where: { id: productId },
     include: {
@@ -22,7 +24,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div className="flex h-full w-full flex-col items-center">
-      <ProdutctHeader
+      <ProductHeader
         restaurantSlug={slug}
         src={product.imageUrl ?? "/fallback.png"}
         alt={product.name}

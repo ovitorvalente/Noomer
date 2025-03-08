@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+
 import { GetRestaurantBySlug } from "../data/get-restaurant-by-slug";
 import { ConsumptionMethodOption } from "./components/consumption-method-option";
 

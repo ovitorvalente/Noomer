@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -10,8 +12,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
 
 interface OrderPlacedProps {
   open: boolean;
@@ -20,10 +20,6 @@ interface OrderPlacedProps {
 }
 
 export function OrderPlaced({ open, onOpenChange }: OrderPlacedProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const cpf = searchParams.get("cpf");
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="flex flex-col gap-8">

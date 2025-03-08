@@ -11,7 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface OrderPlacedProps {
   open: boolean;
@@ -19,12 +19,10 @@ interface OrderPlacedProps {
   restaurantSlug: string;
 }
 
-export function OrderPlaced({
-  open,
-  onOpenChange,
-  restaurantSlug,
-}: OrderPlacedProps) {
+export function OrderPlaced({ open, onOpenChange }: OrderPlacedProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const cpf = searchParams.get("cpf");
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -36,7 +34,7 @@ export function OrderPlaced({
             width={72}
             height={72}
           />
-          <div className="flex w-full flex-col gap-2">
+          <div className="flex w-full flex-col items-center gap-2">
             <DialogTitle>Pedido Efetuado!</DialogTitle>
             <DialogDescription>
               Seu pedido foi realizado com sucesso!
@@ -44,12 +42,11 @@ export function OrderPlaced({
           </div>
         </DialogHeader>
         <DialogFooter>
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex w-full items-center justify-center gap-2">
             <Button
               variant={"secondary"}
               size={"lg"}
-              className="rounded-full bg-transparent font-bold text-red-500 shadow-none"
-              onClick={() => router.push(`/${restaurantSlug}/orders`)}
+              className="w-fit rounded-full bg-transparent font-bold text-red-500 shadow-none"
             >
               Ver Pedidos
             </Button>
@@ -57,7 +54,7 @@ export function OrderPlaced({
               <Button
                 variant={"secondary"}
                 size={"lg"}
-                className="w-full rounded-full font-bold"
+                className="w-fit rounded-full font-bold"
               >
                 Continuar
               </Button>

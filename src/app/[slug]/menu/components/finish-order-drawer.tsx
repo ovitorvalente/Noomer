@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { createOrder } from "../actions/create-order";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { ConsumptionMethod } from "@prisma/client";
 import { useContext, useState, useTransition } from "react";
 import { CartContext } from "../contexts/cart";
@@ -59,6 +59,7 @@ export function FinishOrderDrawer({
 }: FinishOrderDrawerProps) {
   const { slug } = useParams<{ slug: string }>();
   const SearchParams = useSearchParams();
+  const router = useRouter();
   const { products } = useContext(CartContext);
   const [isPending, startTransition] = useTransition();
   const [isOrderPlaced, setIsOrderPlaced] = useState<boolean>(false);
@@ -87,6 +88,7 @@ export function FinishOrderDrawer({
         });
         onOpenChange(false);
         setIsOrderPlaced(true);
+        router.push(`/${slug}/orders?cpf=${data.cpf}`);
       });
     } catch (error) {
       console.error("Error");

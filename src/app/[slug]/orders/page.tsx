@@ -27,6 +27,7 @@ export default async function OrdersPage({ searchParams }: OrdersPageProps) {
         select: {
           name: true,
           avatarImageUrl: true,
+          slug: true,
         },
       },
       orderProducts: {
@@ -40,7 +41,7 @@ export default async function OrdersPage({ searchParams }: OrdersPageProps) {
   return (
     <>
       <div className="flex w-full flex-col">
-        <Header />
+        <Header slug={orders[0].restaurant.slug} />
         <OrderList orders={orders} />
       </div>
     </>

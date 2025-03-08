@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ConsumptionMethod } from "@prisma/client";
 import { Loader2Icon } from "lucide-react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useContext, useState, useTransition } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
@@ -61,10 +61,10 @@ export function FinishOrderDrawer({
 }: FinishOrderDrawerProps) {
   const { slug } = useParams<{ slug: string }>();
   const SearchParams = useSearchParams();
-  const router = useRouter();
   const { products } = useContext(CartContext);
   const [isPending, startTransition] = useTransition();
   const [isOrderPlaced, setIsOrderPlaced] = useState<boolean>(false);
+  const [customerCpf, setCustomerCpf] = useState<string>("");
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -90,7 +90,7 @@ export function FinishOrderDrawer({
         });
         onOpenChange(false);
         setIsOrderPlaced(true);
-        router.push(`/${slug}/orders?cpf=${data.cpf}`);
+        setCustomerCpf(data.cpf);
       });
     } catch (error) {
       console.error(`Error: ${error}`);
@@ -176,6 +176,7 @@ export function FinishOrderDrawer({
         open={isOrderPlaced}
         onOpenChange={setIsOrderPlaced}
         restaurantSlug={slug}
+        cpf={customerCpf}
       />
     </>
   );

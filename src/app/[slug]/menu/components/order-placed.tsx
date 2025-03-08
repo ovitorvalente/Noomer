@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,9 +18,20 @@ interface OrderPlacedProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   restaurantSlug: string;
+  cpf: string;
 }
 
-export function OrderPlaced({ open, onOpenChange }: OrderPlacedProps) {
+export function OrderPlaced({
+  open,
+  onOpenChange,
+  restaurantSlug,
+  cpf,
+}: OrderPlacedProps) {
+  const router = useRouter();
+
+  const handleViewOrders = () => {
+    router.push(`/${restaurantSlug}/orders?cpf=${cpf}`);
+  };
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="flex flex-col gap-8">
@@ -43,6 +55,7 @@ export function OrderPlaced({ open, onOpenChange }: OrderPlacedProps) {
               variant={"secondary"}
               size={"lg"}
               className="w-fit rounded-full bg-transparent font-bold text-red-500 shadow-none"
+              onClick={handleViewOrders}
             >
               Ver Pedidos
             </Button>

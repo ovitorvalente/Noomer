@@ -24,12 +24,6 @@ export default function NotFound() {
               Voltar ao início
             </Link>
           </Button>
-          {/* <Button variant="outline" asChild>
-            <Link href="javascript:history.back()">
-              <ArrowLeft className="mr-2 size-4" />
-              Voltar
-            </Link>
-          </Button> */}
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AI Foodie",
+  title: "Noomer",
   description: "O sabor certo, na hora certa, com inteligência!",
 };
 

@@ -1,9 +1,10 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { Header } from "@/app/components/header";
 import { db } from "@/lib/prisma";
 
 import RestaurantCategories from "./components/categories";
-import { RestaurantHeader } from "./components/menu-header";
 
 interface RestaurantMenuPageProps {
   params: Promise<{ slug: string }>;
@@ -34,14 +35,17 @@ export default async function RestaurantMenuPage({
   }
 
   return (
-    <div className="">
-      <div className="relative h-[250px] w-full">
-        <RestaurantHeader
-          restaurantSlug={slug}
+    <div className="flex w-full flex-col items-center justify-center">
+      <Header restaurantSlug={slug} restaurant={restaurant} />
+      <div className="relative mt-20 h-96 w-full max-w-7xl">
+        <Image
           src={restaurant.coverImageUrl}
           alt={restaurant.name}
+          fill
+          className="pointer-events-none rounded-3xl object-fill p-2"
         />
       </div>
+
       <RestaurantCategories restaurant={restaurant} />
     </div>
   );

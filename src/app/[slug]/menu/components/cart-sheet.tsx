@@ -22,7 +22,7 @@ export function CartSheet() {
   return (
     <>
       <Sheet open={isOpen} onOpenChange={toggleCart}>
-        <SheetContent className="flex w-[90%] flex-col items-start">
+        <SheetContent className="flex w-3/6 flex-col items-start">
           <SheetHeader className="">
             <SheetTitle>Sacola</SheetTitle>
           </SheetHeader>

@@ -43,66 +43,75 @@ export default function RestaurantCategories({
   };
 
   return (
-    <div className="relative z-50 mt-[-1.5rem] space-y-2 rounded-t-3xl bg-background p-8">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-4">
-          <Image
-            src={restaurant.avatarImageUrl}
-            alt={restaurant.name}
-            width={45}
-            height={45}
-            className="object-cover"
-          />
-          <div className="">
-            <h1 className="text-lg font-semibold">{restaurant.name}</h1>
-            <p className="text-sm opacity-50">{restaurant.description}</p>
+    <>
+      <div className="relative z-50 flex w-full max-w-7xl flex-col space-y-2 rounded-t-3xl p-2">
+        <div className="flex items-start justify-between rounded-3xl py-4">
+          <div className="flex items-center gap-4">
+            <Image
+              src={restaurant.avatarImageUrl}
+              alt={restaurant.name}
+              width={45}
+              height={45}
+              className="rounded-2xl object-cover"
+            />
+            <div className="">
+              <h1 className="text-lg font-semibold">{restaurant.name}</h1>
+              <p className="text-sm opacity-50">{restaurant.description}</p>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-2">
+            <div className="flex w-fit items-center gap-2 px-2 text-sm font-semibold text-green-500">
+              <Clock size={16} />
+              Aberto
+            </div>
+            <div className="flex w-fit items-center gap-2 px-2 text-sm font-semibold text-yellow-500">
+              <StarIcon className="text-yellow-500" size={14} />
+              5.0
+            </div>
           </div>
         </div>
-        <div className="flex w-fit items-center gap-2 rounded-full border px-2">
-          <StarIcon className="text-yellow-500" size={14} />
-          5.0
-        </div>
-      </div>
-      <div className="flex w-fit items-center gap-2 rounded-full bg-green-50/5 px-2 font-semibold text-green-500">
-        <Clock size={16} />
-        Aberto
-      </div>
 
-      <ScrollArea className="w-full border-b">
-        <div className="flex w-max gap-4 py-4">
-          {restaurant.menuCategories.map((category) => (
-            <Button
-              onClick={() => handleCategoryClick(category)}
-              key={category.id}
-              variant={getCategoryButtonVariant(category)}
-              size={"sm"}
-            >
-              {category.name}
-            </Button>
-          ))}
-        </div>
-        <ScrollBar orientation="horizontal" />
-      </ScrollArea>
+        <ScrollArea className="w-full border-b">
+          <div className="flex w-max gap-4 py-4">
+            {restaurant.menuCategories.map((category) => (
+              <Button
+                onClick={() => handleCategoryClick(category)}
+                key={category.id}
+                variant={getCategoryButtonVariant(category)}
+                size={"sm"}
+              >
+                {category.name}
+              </Button>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
 
-      <h3 className="mt-4 text-xl font-semibold">{selectedCategory.name}</h3>
+        <h3 className="mt-4 text-xl font-semibold">{selectedCategory.name}</h3>
 
-      <Products products={selectedCategory.products} />
+        <Products products={selectedCategory.products} />
 
-      {products.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 flex w-full items-center justify-between border-t bg-background px-8 py-4">
-          <div className="">
-            <p className="text-xs text-muted-foreground">Total dos Pedidos</p>
-            <p className="text-sm font-semibold">
-              {formatCurrency(total)}
+        {products.length > 0 && (
+          <div
+            onClick={toggleCart}
+            className="fixed bottom-0 left-0 right-0 flex w-full cursor-pointer items-center justify-between bg-foreground px-8 py-4 lg:hidden"
+          >
+            <span className="text-sm font-bold text-background">
+              Ver Sacola
+            </span>
+            <div className="flex items-center justify-center">
+              <p className="text-sm font-semibold text-background">
+                {formatCurrency(total)}
+              </p>
+
               <span className="text-xs font-normal text-muted-foreground">
                 / {totalQuantity} {totalQuantity > 1 ? "itens" : "item"}
               </span>
-            </p>
+            </div>
           </div>
-          <Button onClick={toggleCart}>Ver Sacola</Button>
-          <CartSheet />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+      <CartSheet />
+    </>
   );
 }

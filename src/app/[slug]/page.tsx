@@ -29,7 +29,7 @@ export default async function RestaurantPage({ params }: RestaurantPageProps) {
 
       <div className="flex flex-col items-center justify-center space-y-2 py-24">
         <h2 className="text-2xl font-semibold">Seja bem-vindo!</h2>
-        <p className="text-center opacity-50">
+        <p className="max-w-xl text-center opacity-50">
           Escolha como prefere aproveitar sua refeição. Estamos aqui para
           oferecer praticidade e sabor em cada detalhe!
         </p>

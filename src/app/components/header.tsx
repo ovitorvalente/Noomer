@@ -31,7 +31,6 @@ export function Header({ restaurantSlug }: HeaderProps) {
           Voltar
         </span>
       </Button>
-      {/* <div className="w-full max-w-7xl">teste</div> */}
       <div className="flex items-center justify-center gap-2">
         <Button
           variant={"ghost"}
